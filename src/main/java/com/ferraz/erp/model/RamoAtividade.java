@@ -22,6 +22,15 @@ public class RamoAtividade implements Serializable {
 	
 	@Column(nullable=false, length=80)
 	private String descricao;
+	
+	
+	public RamoAtividade() {}	
+
+	public RamoAtividade(String descricao) {
+		super();
+		this.descricao = descricao;
+	}
+	
 
 	public Long getId() {
 		return id;

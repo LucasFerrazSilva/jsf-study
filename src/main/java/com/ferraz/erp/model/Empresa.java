@@ -47,6 +47,22 @@ public class Empresa implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name="TIPO_EMPRESA", nullable=false, length=30)
 	private TipoEmpresa tipoEmpresa;
+	
+	
+	public Empresa() {}
+	
+	public Empresa(String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao, RamoAtividade ramoAtividade, TipoEmpresa tipoEmpresa) {
+		super();
+		this.nomeFantasia = nomeFantasia;
+		this.razaoSocial = razaoSocial;
+		this.cnpj = cnpj;
+		this.dataFundacao = dataFundacao;
+		this.ramoAtividade = ramoAtividade;
+		this.tipoEmpresa = tipoEmpresa;
+	}
+
+
+
 
 	public Long getId() {
 		return id;
