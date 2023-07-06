@@ -2,12 +2,14 @@ package com.ferraz.erp.repository;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import com.ferraz.erp.model.Empresa;
 
 public class EmpresaDAO {
 	
+	@Inject
 	private EntityManager em;
 	
 	

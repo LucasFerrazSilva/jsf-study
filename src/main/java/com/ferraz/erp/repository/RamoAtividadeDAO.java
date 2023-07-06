@@ -2,6 +2,7 @@ package com.ferraz.erp.repository;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -11,6 +12,7 @@ import com.ferraz.erp.model.RamoAtividade;
 
 public class RamoAtividadeDAO {
 	
+	@Inject
 	private EntityManager em;
 	
 
