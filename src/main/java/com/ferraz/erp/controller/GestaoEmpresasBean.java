@@ -5,22 +5,30 @@ import java.io.Serializable;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import com.ferraz.erp.model.Empresa;
+import com.ferraz.erp.model.TipoEmpresa;
+
 @Named
 @ViewScoped
 public class GestaoEmpresasBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static Integer NUMERO = 0;
+	private Empresa empresa = new Empresa();
 	
 	
-	public GestaoEmpresasBean() {
-		NUMERO++;		
+	public void salvar() {
+		System.out.println(
+				"Razão social: " + empresa.getRazaoSocial() + ", Nome Fantasia: " + empresa.getNomeFantasia() + ", Tipo empresa: " + empresa.getTipoEmpresa()
+			);
 	}
 	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
 	
-	public Integer getNumero() {
-		return NUMERO;
+	public TipoEmpresa[] getTiposEmpresa() {
+		return TipoEmpresa.values();
 	}
 
 }
