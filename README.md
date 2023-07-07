@@ -7,7 +7,7 @@ O JSF é uma especificação. As principais implementações do JSF são o Mojar
 
 O JSF é utilizado principalmente em aplicações corporativas, pois seu foco é na criação e utilização de componentes reutilizáveis.
 
-## Vantagens
+### Vantagens
 
  * Utiliza o modelo MVC
  * Baseado em componentes
@@ -16,3 +16,14 @@ O JSF é utilizado principalmente em aplicações corporativas, pois seu foco é
  * Facilita na conversão e validação dos dados
  * Fácil internacionalização
  * Tem um framework de templates imbutido
+ 
+## Escopos de um Managed Bean
+
+Definimos que uma classe será um Managed Bean usando a anotação @Named.
+
+Tipos de escopo:
+
+ * **@RequestScoped**: escopo de requisição. Ou seja, é criado a cada nova requisição.
+ * **@ViewScoped**: carrega quando a página é carregada e termina quando a sessão acaba ou quando é feita navegação no JSF. Talvez precise implementar Serializable pra funcionar.
+ * **@SessionScoped**: escopo de sessão do usuário.
+ * **@ApplicationScoped**: escopo de aplicação. Ou seja, o Bean é criado quando a aplicação é inicializada.
