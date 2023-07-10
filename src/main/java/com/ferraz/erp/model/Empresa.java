@@ -1,6 +1,7 @@
 package com.ferraz.erp.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -48,20 +49,24 @@ public class Empresa implements Serializable {
 	@Column(name="TIPO_EMPRESA", nullable=false, length=30)
 	private TipoEmpresa tipoEmpresa;
 	
+	@Column(precision=10, scale=2)
+	private BigDecimal faturamento;
+	
 	
 	public Empresa() {}
 	
-	public Empresa(String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao, RamoAtividade ramoAtividade, TipoEmpresa tipoEmpresa) {
+	public Empresa(Long id, String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao,
+			RamoAtividade ramoAtividade, TipoEmpresa tipoEmpresa, BigDecimal faturamento) {
 		super();
+		this.id = id;
 		this.nomeFantasia = nomeFantasia;
 		this.razaoSocial = razaoSocial;
 		this.cnpj = cnpj;
 		this.dataFundacao = dataFundacao;
 		this.ramoAtividade = ramoAtividade;
 		this.tipoEmpresa = tipoEmpresa;
+		this.faturamento = faturamento;
 	}
-
-
 
 
 	public Long getId() {
@@ -118,6 +123,14 @@ public class Empresa implements Serializable {
 
 	public void setTipoEmpresa(TipoEmpresa tipoEmpresa) {
 		this.tipoEmpresa = tipoEmpresa;
+	}
+	
+	public BigDecimal getFaturamento() {
+		return faturamento;
+	}
+
+	public void setFaturamento(BigDecimal faturamento) {
+		this.faturamento = faturamento;
 	}
 
 	@Override

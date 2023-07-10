@@ -34,3 +34,24 @@ Tipos de escopo:
 * **Explícita**: a URL representa a página atual (é feito o redirect)
 
 Para fazer a navegação explícita, precisamos passar como parâmetro na String "faces-redirect=true" (ex: "NomeDaPagina?faces-redirect=true").
+
+## Mudando o idioma da aplicação
+
+Basta criar o arquivo *faces-config.xml* dentro da pasta WEB-INF com o seguinte conteúdo:
+
+```XML
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+	
+	<application>
+		<locale-config>
+			<default-locale>pt_BR</default-locale>
+		</locale-config>
+	</application>
+	
+</faces-config>
+```
+
