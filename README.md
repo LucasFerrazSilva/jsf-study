@@ -27,3 +27,10 @@ Tipos de escopo:
  * **@ViewScoped**: carrega quando a página é carregada e termina quando a sessão acaba ou quando é feita navegação no JSF. Talvez precise implementar Serializable pra funcionar.
  * **@SessionScoped**: escopo de sessão do usuário.
  * **@ApplicationScoped**: escopo de aplicação. Ou seja, o Bean é criado quando a aplicação é inicializada.
+ 
+## Navegação implícita e explícita
+
+* **Implícita**: a URL não muda quando a página muda, é mantido o histórico de navegação (não é feito o redirect)
+* **Explícita**: a URL representa a página atual (é feito o redirect)
+
+Para fazer a navegação explícita, precisamos passar como parâmetro na String "faces-redirect=true" (ex: "NomeDaPagina?faces-redirect=true").
