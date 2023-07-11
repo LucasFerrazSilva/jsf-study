@@ -55,10 +55,9 @@ public class Empresa implements Serializable {
 	
 	public Empresa() {}
 	
-	public Empresa(Long id, String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao,
+	public Empresa(String nomeFantasia, String razaoSocial, String cnpj, Date dataFundacao,
 			RamoAtividade ramoAtividade, TipoEmpresa tipoEmpresa, BigDecimal faturamento) {
 		super();
-		this.id = id;
 		this.nomeFantasia = nomeFantasia;
 		this.razaoSocial = razaoSocial;
 		this.cnpj = cnpj;

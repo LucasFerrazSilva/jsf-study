@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class EmpresaDAOTest {
 		RamoAtividade ramoAtividade = createRamoAtividade();
 		
 		em.getTransaction().begin();
-		Empresa empresa = new Empresa("Nome Fantasia", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI);		
+		Empresa empresa = new Empresa("Nome Fantasia", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI, BigDecimal.ZERO);		
 		em.persist(empresa);
 		em.getTransaction().commit();	
 		
@@ -140,7 +141,7 @@ public class EmpresaDAOTest {
 	public void testSave() {
 		// Given
 		RamoAtividade ramoAtividade = createRamoAtividade();
-		Empresa empresa = new Empresa("Nome Fantasia X", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI);
+		Empresa empresa = new Empresa("Nome Fantasia X", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI, BigDecimal.ONE);
 		
 		// When
 		em.getTransaction().begin();

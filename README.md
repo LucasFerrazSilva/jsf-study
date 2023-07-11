@@ -55,3 +55,20 @@ Basta criar o arquivo *faces-config.xml* dentro da pasta WEB-INF com o seguinte 
 </faces-config>
 ```
 
+## Ciclo de vida
+ 
+Ciclo de vida da primeira requisição:
+
+ 1. Requisição 
+ 2. Restaurar a visão: cria a árvore de componentes
+ 3. Renderizar a resposta
+ 4. Resposta
+
+Ciclo de vida de um Postback (interação do usuário com a aplicação):
+
+ 1. Restaurar visão: recupera a árvore de componentes
+ 2. Aplicar valores da requisição: cada string enviada é armazenada no respectivo componente
+ 3. Processar requisições: o JSF faz as conversões (ex: de String para BigDecimal, String para Date, etc.) utilizando os conversoes especificados. Caso não consiga realizar a conversão, pula direto para o *Renderizar a resposta*
+ 4. Atualizar os valores do modelo: atualiza os valores do objeto mapeado
+ 5. Invocar a aplicação: realiza o método em si
+ 6. Renderizar a resposta: renderiza o componente com os novos valores
