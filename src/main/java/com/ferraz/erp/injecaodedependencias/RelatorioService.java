@@ -1,4 +1,4 @@
-package com.ferraz.erp.id;
+package com.ferraz.erp.injecaodedependencias;
 
 import java.math.BigDecimal;
 

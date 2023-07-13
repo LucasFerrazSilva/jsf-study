@@ -72,3 +72,40 @@ Ciclo de vida de um Postback (interação do usuário com a aplicação):
  4. Atualizar os valores do modelo: atualiza os valores do objeto mapeado
  5. Invocar a aplicação: realiza o método em si
  6. Renderizar a resposta: renderiza o componente com os novos valores
+
+## Prime Faces
+
+Para que o Prime Faces funcione no projeto, basta adicionar a dependência no pom.xml:
+
+```XML
+<dependency>
+	<groupId>org.primefaces</groupId>
+	<artifactId>primefaces</artifactId>
+	<version>6.0</version>
+	<scope>compile</scope>
+</dependency>
+```
+
+Nos arquivos .xhtml precisamos fazer a importação do mesmo:
+
+```HTML
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	...
+	xmlns:p="http://primefaces.org/ui">
+```
+
+Agora, para usarmos seus componentes, basta usar a tag p:nomeDoComponente:
+
+```HTML
+<p:dataTable value="#{[0, 0, 0, 0]}">
+	<p:column headerText="Razão Social">
+		<h:outputText value="Empresa X LTDA" />
+	</p:column>
+	<p:column headerText="Nome Fantasia">
+		<h:outputText value="Empresa X" />
+	</p:column>
+	<p:column headerText="Tipo Empresa">
+		<h:outputText value="LTDA" />
+	</p:column>
+</p:dataTable>
+```
