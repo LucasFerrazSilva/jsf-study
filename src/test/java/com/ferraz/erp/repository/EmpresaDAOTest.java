@@ -102,7 +102,7 @@ public class EmpresaDAOTest {
 		Empresa empresa = createEmpresa();
 		
 		// When
-		List<Empresa> list = this.dao.findByNomeFantasia(empresa.getNomeFantasia());
+		List<Empresa> list = this.dao.search(empresa.getNomeFantasia());
 		
 		// Then
 		assertNotNull(list);
@@ -116,7 +116,7 @@ public class EmpresaDAOTest {
 		Empresa empresa = createEmpresa();
 		
 		// When
-		List<Empresa> list = this.dao.findByNomeFantasia(empresa.getNomeFantasia().substring(2, 10));
+		List<Empresa> list = this.dao.search(empresa.getNomeFantasia().substring(2, 10));
 		
 		// Then
 		assertNotNull(list);
@@ -130,7 +130,7 @@ public class EmpresaDAOTest {
 		Empresa empresa = createEmpresa();
 		
 		// When
-		List<Empresa> list = this.dao.findByNomeFantasia("Nome fantasia invalido");
+		List<Empresa> list = this.dao.search("Nome fantasia invalido");
 		
 		// Then
 		assertNotNull(list);
@@ -149,7 +149,7 @@ public class EmpresaDAOTest {
 		em.getTransaction().commit();
 		
 		// Then
-		List<Empresa> list = dao.findByNomeFantasia(empresa.getNomeFantasia());
+		List<Empresa> list = dao.search(empresa.getNomeFantasia());
 		assertNotNull(list);
 		assertEquals(1, list.size());
 	}

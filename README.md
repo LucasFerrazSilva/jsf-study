@@ -109,3 +109,4 @@ Agora, para usarmos seus componentes, basta usar a tag p:nomeDoComponente:
 	</p:column>
 </p:dataTable>
 ```
+

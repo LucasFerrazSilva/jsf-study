@@ -1,5 +1,6 @@
 package com.ferraz.erp.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,7 +8,9 @@ import javax.persistence.EntityManager;
 
 import com.ferraz.erp.model.Empresa;
 
-public class EmpresaDAO {
+public class EmpresaDAO implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private EntityManager em;
@@ -27,7 +30,7 @@ public class EmpresaDAO {
 		return em.createQuery("from Empresa", Empresa.class).getResultList();
 	}
 	
-	public List<Empresa> findByNomeFantasia(String nomeFantasia) {
+	public List<Empresa> search(String nomeFantasia) {
 		String jpql = "from Empresa where nomeFantasia like :nomeFantasia";
 		
 		return em.createQuery(jpql, Empresa.class)

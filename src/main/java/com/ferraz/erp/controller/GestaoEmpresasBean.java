@@ -1,12 +1,14 @@
 package com.ferraz.erp.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.ferraz.erp.model.Empresa;
-import com.ferraz.erp.model.TipoEmpresa;
+import com.ferraz.erp.repository.EmpresaDAO;
 
 @Named
 @ViewScoped
@@ -14,27 +16,18 @@ public class GestaoEmpresasBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Empresa empresa = new Empresa();
+	@Inject
+	private EmpresaDAO empresaDao;
+	
+	private List<Empresa> empresas;
 	
 	
-	public void salvar() {
-		System.out.println(
-				"Razão social: " + empresa.getRazaoSocial() 
-				+ ", Nome Fantasia: " + empresa.getNomeFantasia() 
-				+ ", Tipo empresa: " + empresa.getTipoEmpresa()
-			);
+	public void buscaEmpresas() {
+		empresas = empresaDao.list();
 	}
 	
-	public String ajuda() {
-		return "AjudaGestaoEmpresas?faces-redirect=true";
-	}
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	 
-	public TipoEmpresa[] getTiposEmpresa() {
-		return TipoEmpresa.values();
+	public List<Empresa> getEmpresas() {
+		return empresas;
 	}
 
 }
