@@ -30,11 +30,11 @@ public class EmpresaDAO implements Serializable {
 		return em.createQuery("from Empresa", Empresa.class).getResultList();
 	}
 	
-	public List<Empresa> search(String nomeFantasia) {
-		String jpql = "from Empresa where nomeFantasia like :nomeFantasia";
+	public List<Empresa> search(String razaoSocial) {
+		String jpql = "from Empresa where UPPER(razaoSocial) like UPPER(:razaoSocial)";
 		
 		return em.createQuery(jpql, Empresa.class)
-					.setParameter("nomeFantasia", "%" + nomeFantasia + "%")
+					.setParameter("razaoSocial", "%" + razaoSocial + "%")
 					.getResultList();
 	}
 	

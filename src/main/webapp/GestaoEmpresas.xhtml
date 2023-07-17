@@ -14,16 +14,18 @@
 		</f:metadata>
 		
 		<h:form>
+			<p:messages autoUpdate="true" />
+		
 			<p:toolbar>
 				<f:facet name="left">
-					<p:inputText placeholder="Pesquisar..." size="30" />
-					<p:commandButton value="Pesquisar" icon="fa fa-search" />
+					<p:inputText value="#{gestaoEmpresasBean.termoPesquisa}" placeholder="Pesquisar..." size="30" />
+					<p:commandButton value="Pesquisar" icon="fa fa-search" actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable" />
 					
 					<span class="ui-separator">
 						<span class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 					
-					<p:commandButton value="Adicionar" icon="fa fa-plus" />
+					<p:commandButton value="Adicionar" icon="fa fa-plus" onclick="PF('empresaDialogWidgetVar').show()" />
 					
 					<span class="ui-separator">
 						<span class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -42,7 +44,7 @@
 			
 			<p:spacer height="20px" />
 		
-			<p:dataTable value="#{gestaoEmpresasBean.empresas}" var="empresa" emptyMessage="Nenhuma empresa cadastrada." 
+			<p:dataTable id="empresasDataTable" value="#{gestaoEmpresasBean.empresas}" var="empresa" emptyMessage="Nenhuma empresa cadastrada." 
 			paginator="true" rows="10" paginatorPosition="bottom">
 				<p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
 					<h:outputText value="#{empresa.razaoSocial}" />
@@ -57,6 +59,10 @@
 					<h:outputText value="#{empresa.ramoAtividade.descricao}" />
 				</p:column>
 			</p:dataTable>
+			
+			<p:dialog header="Nova empresa" widgetVar="empresaDialogWidgetVar" modal="true" resizable="false" closeOnEscape="true">
+				<p:commandButton value="Teste" />			
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>
