@@ -3,13 +3,17 @@ package com.ferraz.erp.controller;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.ferraz.erp.converter.RamoAtividadeConverter;
 import com.ferraz.erp.model.Empresa;
+import com.ferraz.erp.model.RamoAtividade;
 import com.ferraz.erp.model.TipoEmpresa;
 import com.ferraz.erp.repository.EmpresaDAO;
+import com.ferraz.erp.repository.RamoAtividadeDAO;
 import com.ferraz.erp.util.FacesMessages;
 
 @Named
@@ -20,6 +24,11 @@ public class GestaoEmpresasBean implements Serializable {
 	
 	@Inject
 	private EmpresaDAO empresaDao;
+	
+	@Inject
+	private RamoAtividadeDAO ramoAtividadeDAO;
+	
+	private Converter ramoAtividadeConverter;
 	
 	@Inject
 	private FacesMessages facesMessages;
@@ -39,6 +48,18 @@ public class GestaoEmpresasBean implements Serializable {
 	
 	public void buscaEmpresas() {
 		empresas = empresaDao.list();
+	}
+	
+	public List<RamoAtividade> completarRamoAtividade(String termo) {
+		List<RamoAtividade> list = ramoAtividadeDAO.search(termo);
+		
+		ramoAtividadeConverter = new RamoAtividadeConverter(list);
+		
+		return list;
+	}
+	
+	public Converter getRamoAtividadeConverter() {
+		return ramoAtividadeConverter;
 	}
 	
 	public List<Empresa> getEmpresas() {

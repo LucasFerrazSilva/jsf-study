@@ -63,7 +63,7 @@ public class EmpresaDAOTest {
 		RamoAtividade ramoAtividade = createRamoAtividade();
 		
 		em.getTransaction().begin();
-		Empresa empresa = new Empresa("Nome Fantasia", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI, BigDecimal.ZERO);		
+		Empresa empresa = new Empresa("Nome Fantasia", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI);		
 		em.persist(empresa);
 		em.getTransaction().commit();	
 		
@@ -141,7 +141,7 @@ public class EmpresaDAOTest {
 	public void testSave() {
 		// Given
 		RamoAtividade ramoAtividade = createRamoAtividade();
-		Empresa empresa = new Empresa("Nome Fantasia X", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI, BigDecimal.ONE);
+		Empresa empresa = new Empresa("Nome Fantasia X", "Razao Social", "123456789", new Date(1995, 7, 17), ramoAtividade, TipoEmpresa.MEI);
 		
 		// When
 		em.getTransaction().begin();

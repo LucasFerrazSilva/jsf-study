@@ -1,5 +1,6 @@
 package com.ferraz.erp.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,7 +11,9 @@ import javax.persistence.criteria.Root;
 
 import com.ferraz.erp.model.RamoAtividade;
 
-public class RamoAtividadeDAO {
+public class RamoAtividadeDAO implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private EntityManager em;
