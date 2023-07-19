@@ -1,7 +1,6 @@
 package com.ferraz.erp.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -17,6 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 @Table(name="TB_EMPRESA")
@@ -28,23 +32,31 @@ public class Empresa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank
 	@Column(name="NOME_FANTASIA", nullable=false, length=80)
 	private String nomeFantasia;
 	
+	@NotBlank
 	@Column(name="RAZAO_SOCIAL", nullable=false, length=120)
 	private String razaoSocial;
-	
+
+	@NotBlank
+	@CNPJ
 	@Column(nullable=false, length=18)
 	private String cnpj;
 	
+	@NotNull
+	@Past
 	@Temporal(TemporalType.DATE)
 	@Column(name="DATA_FUNDACAO")
 	private Date dataFundacao;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="RAMO_ATIVIDADE_ID", nullable=false)
 	private RamoAtividade ramoAtividade;
-	
+
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	@Column(name="TIPO_EMPRESA", nullable=false, length=30)
 	private TipoEmpresa tipoEmpresa;

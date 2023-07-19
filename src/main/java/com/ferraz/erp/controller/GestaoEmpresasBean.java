@@ -1,12 +1,15 @@
 package com.ferraz.erp.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
 
 import com.ferraz.erp.converter.RamoAtividadeConverter;
 import com.ferraz.erp.model.Empresa;
@@ -74,7 +77,8 @@ public class GestaoEmpresasBean implements Serializable {
 	public void salvar() {
 		cadastroEmpresaService.save(empresa);
 		pesquisar();
-		messages.info("Empresa cadastrada com sucesso!");;
+		messages.info("Empresa salva com sucesso!");
+		RequestContext.getCurrentInstance().update(Arrays.asList("frm:empresasDataTable", "frm:messages"));
 	}
 	
 	public Converter getRamoAtividadeConverter() {
