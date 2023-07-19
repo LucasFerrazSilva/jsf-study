@@ -14,6 +14,7 @@ import com.ferraz.erp.model.RamoAtividade;
 import com.ferraz.erp.model.TipoEmpresa;
 import com.ferraz.erp.repository.EmpresaDAO;
 import com.ferraz.erp.repository.RamoAtividadeDAO;
+import com.ferraz.erp.service.CadastroEmpresaService;
 import com.ferraz.erp.util.FacesMessages;
 
 @Named
@@ -26,23 +27,31 @@ public class GestaoEmpresasBean implements Serializable {
 	private EmpresaDAO empresaDao;
 	
 	@Inject
+	private CadastroEmpresaService cadastroEmpresaService;
+	
+	@Inject
 	private RamoAtividadeDAO ramoAtividadeDAO;
 	
 	private Converter ramoAtividadeConverter;
 	
 	@Inject
-	private FacesMessages facesMessages;
+	private FacesMessages messages;
 	
 	private List<Empresa> empresas;
 	
 	private String termoPesquisa;
 	
+	private Empresa empresa;
+	
 	
 	public void pesquisar() {
+		if (termoPesquisa == null)
+			termoPesquisa = "";
+		
 		empresas = empresaDao.search(termoPesquisa);
 		
 		if (empresas.isEmpty()) {
-			facesMessages.info("Sua consulta não retornou registros.");
+			messages.info("Sua consulta não retornou registros.");
 		}
 	}
 	
@@ -56,6 +65,16 @@ public class GestaoEmpresasBean implements Serializable {
 		ramoAtividadeConverter = new RamoAtividadeConverter(list);
 		
 		return list;
+	}
+
+	public void prepararNovaEmpresa() {
+		empresa = new Empresa();
+	}
+	
+	public void salvar() {
+		cadastroEmpresaService.save(empresa);
+		pesquisar();
+		messages.info("Empresa cadastrada com sucesso!");;
 	}
 	
 	public Converter getRamoAtividadeConverter() {
@@ -77,5 +96,9 @@ public class GestaoEmpresasBean implements Serializable {
 	public TipoEmpresa[] getTiposEmpresa() {
 		return TipoEmpresa.values();
 	}
-
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	
 }

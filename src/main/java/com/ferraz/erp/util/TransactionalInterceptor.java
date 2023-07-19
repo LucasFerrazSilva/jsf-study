@@ -29,10 +29,10 @@ public class TransactionalInterceptor implements Serializable {
 			if (transaction.isActive()) {
 				transaction.begin();
 				transaction.rollback();
-				
-				transaction.begin();
-				creator = true;
 			}
+			
+			transaction.begin();
+			creator = true;
 			
 			return context.proceed();
 		} catch (Exception e) {
