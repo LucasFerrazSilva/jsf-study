@@ -85,6 +85,13 @@ public class GestaoEmpresasBean implements Serializable {
 		RequestContext.getCurrentInstance().update(Arrays.asList("frm:empresasDataTable", "frm:messages"));
 	}
 	
+	public void excluir() {
+		cadastroEmpresaService.delete(empresa.getId());
+		empresa = null;
+		pesquisar();
+		messages.info("Empresa excluída com sucesso!");
+	}
+	
 	public Converter getRamoAtividadeConverter() {
 		return ramoAtividadeConverter;
 	}
